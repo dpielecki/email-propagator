@@ -2,7 +2,6 @@ package io.github.dpielecki.emailpropagator.receiver;
 
 import java.util.Objects;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +15,7 @@ public class Receiver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     
     @Email
     @NotBlank
@@ -26,7 +25,7 @@ public class Receiver {
     public Receiver() {
     }
 
-    public Receiver(long id, String address) {
+    public Receiver(Long id, String address) {
         this.id = id;
         this.address = address;
     }
@@ -39,11 +38,11 @@ public class Receiver {
         this.address = address;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Parameter;
+
 @RestController
 @RequestMapping("/api/emails")
 public class ReceiverController {
@@ -31,7 +33,7 @@ public class ReceiverController {
     }
 
     @GetMapping("/{id}")
-    public Receiver getOne(@PathVariable Long id) {
+    public Receiver getOne(@PathVariable @Parameter(name = "id") Long id) {
         return receiverManager.getOneById(id);
     }
 
@@ -42,14 +44,14 @@ public class ReceiverController {
     }
 
     @PutMapping("/{id}")
-    public Receiver updateOne(@PathVariable Long id, @RequestBody Receiver receiver) {
+    public Receiver updateOne(@PathVariable @Parameter(name = "id") Long id, @RequestBody Receiver receiver) {
         if (receiver.getId() != id) 
             throw new IllegalArgumentException("Given IDs didn't match.");
         return receiverManager.updateOne(id, receiver);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteOne(@PathVariable Long id) {
+    public void deleteOne(@PathVariable @Parameter(name = "id") Long id) {
         receiverManager.deleteOne(id);
     }
 }
