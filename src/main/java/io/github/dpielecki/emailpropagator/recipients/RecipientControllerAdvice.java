@@ -1,4 +1,4 @@
-package io.github.dpielecki.emailpropagator.receiver;
+package io.github.dpielecki.emailpropagator.recipients;
 
 import java.util.NoSuchElementException;
 
@@ -12,7 +12,7 @@ import jakarta.persistence.EntityExistsException;
 import jakarta.validation.ConstraintViolationException;
 
 @ControllerAdvice
-public class ReceiverControllerAdvice {
+public class RecipientControllerAdvice {
     
     @ResponseBody
     @ExceptionHandler(IllegalArgumentException.class)

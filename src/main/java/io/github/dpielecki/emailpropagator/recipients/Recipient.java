@@ -1,4 +1,4 @@
-package io.github.dpielecki.emailpropagator.receiver;
+package io.github.dpielecki.emailpropagator.recipients;
 
 import java.util.Objects;
 
@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-public class Receiver {
+public class Recipient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,10 +22,10 @@ public class Receiver {
     @NotNull
     private String address;
 
-    public Receiver() {
+    public Recipient() {
     }
 
-    public Receiver(Long id, String address) {
+    public Recipient(Long id, String address) {
         this.id = id;
         this.address = address;
     }
@@ -59,13 +59,13 @@ public class Receiver {
             return false;
         if (this.getClass() != o.getClass())
             return false;
-        Receiver other = (Receiver) o;
+        Recipient other = (Recipient) o;
         return this.getAddress().equals(other.getAddress())
             && this.getId() == other.getId();
     }
 
     @Override
     public String toString() {
-        return "Receiver [id=" + id + ", address=" + address + "]";
+        return "Recipient {id=" + id + ", address=" + address + "}";
     }  
 }

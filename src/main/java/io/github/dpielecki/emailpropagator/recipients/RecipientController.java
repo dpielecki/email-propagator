@@ -1,4 +1,4 @@
-package io.github.dpielecki.emailpropagator.receiver;
+package io.github.dpielecki.emailpropagator.recipients;
 
 import java.util.List;
 
@@ -18,40 +18,40 @@ import io.swagger.v3.oas.annotations.Parameter;
 
 @RestController
 @RequestMapping("/api/emails")
-public class ReceiverController {
+public class RecipientController {
 
     @Autowired
-    private final ReceiverManager receiverManager;
+    private final RecipientManager recipientManager;
 
-    public ReceiverController(ReceiverManager receiverManager) {
-        this.receiverManager = receiverManager;
+    public RecipientController(RecipientManager recipientManager) {
+        this.recipientManager = recipientManager;
     }
 
     @GetMapping
-    public List<Receiver> getAll() {
-        return receiverManager.getAll();
+    public List<Recipient> getAll() {
+        return recipientManager.getAll();
     }
 
     @GetMapping("/{id}")
-    public Receiver getOne(@PathVariable @Parameter(name = "id") Long id) {
-        return receiverManager.getOneById(id);
+    public Recipient getOne(@PathVariable @Parameter(name = "id") Long id) {
+        return recipientManager.getOneById(id);
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Receiver addOne(@RequestBody Receiver receiver) {
-        return receiverManager.addOne(receiver);
+    public Recipient addOne(@RequestBody Recipient recipient) {
+        return recipientManager.addOne(recipient);
     }
 
     @PutMapping("/{id}")
-    public Receiver updateOne(@PathVariable @Parameter(name = "id") Long id, @RequestBody Receiver receiver) {
-        if (receiver.getId() != id) 
+    public Recipient updateOne(@PathVariable @Parameter(name = "id") Long id, @RequestBody Recipient recipient) {
+        if (recipient.getId() != id) 
             throw new IllegalArgumentException("Given IDs didn't match.");
-        return receiverManager.updateOne(id, receiver);
+        return recipientManager.updateOne(id, recipient);
     }
 
     @DeleteMapping("/{id}")
     public void deleteOne(@PathVariable @Parameter(name = "id") Long id) {
-        receiverManager.deleteOne(id);
+        recipientManager.deleteOne(id);
     }
 }
