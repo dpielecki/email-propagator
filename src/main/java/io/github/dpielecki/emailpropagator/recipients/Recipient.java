@@ -25,6 +25,10 @@ public class Recipient {
     public Recipient() {
     }
 
+    public Recipient(String address) {
+        this.address = address;
+    }
+
     public Recipient(Long id, String address) {
         this.id = id;
         this.address = address;
